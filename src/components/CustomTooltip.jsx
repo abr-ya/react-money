@@ -3,18 +3,55 @@ import PropTypes from 'prop-types';
 import { IconButton } from '@material-ui/core';
 import { InfoOutlined, HighlightOffOutlined } from '@material-ui/icons';
 import Tooltip from '@material-ui/core/Tooltip';
+import { makeStyles } from '@material-ui/core/styles';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
+const useStyles = makeStyles(() => ({
+  customTooltip: {
+    fontSize: 11,
+    fontWeight: 700,
+    width: 190,
+    marginLeft: '13px',
+    backgroundColor: 'violet',
+    borderRadius: 0,
+  },
+  arrow: {
+    fontSize: 22,
+    marginLeft: '-1px !important',
+    '&::before': {
+      backgroundColor: 'violet',
+      position: 'absolute',
+      marginLeft: '-1px',
+      left: '-10px',
+    },
+  },
+}));
+
 const CustomTooltip = ({ label, text }) => {
-  const [open, setOpen] = useState(false);
+  const [soft, setSoft] = useState(false);
+  const [hard, setHard] = useState(false);
+  const [softBlock, setSoftBlock] = useState(false);
+  const classes = useStyles();
 
   const handleTooltipClose = () => {
-    setOpen(false);
+    setHard(false);
   };
 
-  const handleTooltipOpen = (e) => {
+  const handleIconClick = (e) => {
     e.preventDefault();
-    setOpen((prev) => !prev);
+    if (!hard) setSoftBlock(true);
+    setHard((prev) => !prev);
+  };
+
+  const handleHover = (e) => {
+    e.preventDefault();
+    if (!softBlock) setSoft(true);
+  };
+
+  const handleOut = (e) => {
+    e.preventDefault();
+    setSoft(false);
+    if (!hard) setSoftBlock(false);
   };
 
   return (
@@ -22,11 +59,17 @@ const CustomTooltip = ({ label, text }) => {
       {label}
       <ClickAwayListener onClickAway={handleTooltipClose}>
         <Tooltip
+          classes={{
+            tooltip: classes.customTooltip,
+            arrow: classes.arrow,
+          }}
+          placement="bottom-start"
+          arrow
           PopperProps={{
             disablePortal: true,
           }}
           onClose={handleTooltipClose}
-          open={open}
+          open={soft || hard}
           disableFocusListener
           disableHoverListener
           disableTouchListener
@@ -35,9 +78,11 @@ const CustomTooltip = ({ label, text }) => {
           <IconButton
             aria-label="delete"
             size="small"
-            onClick={(e) => handleTooltipOpen(e)}
+            onClick={(e) => handleIconClick(e)}
+            onMouseOver={(e) => handleHover(e)}
+            onMouseOut={(e) => handleOut(e)}
           >
-            {!open
+            {!hard
               ? <InfoOutlined fontSize="inherit" />
               : <HighlightOffOutlined fontSize="inherit" />}
           </IconButton>

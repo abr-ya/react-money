@@ -10,8 +10,7 @@ import styles from './select.module.scss';
 
 const SelectWay = ({ select, handler }) => {
   const [tooltipText] = useState(
-    `Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-    Exercitationem provident tenetur hic enim temporibus totam.`,
+    'МРОТ - минимальный размер оплаты труда. Разный для разных регионов',
   );
 
   return (
