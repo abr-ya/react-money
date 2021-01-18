@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import StyledFormControlLabel from '../styled/StyledFormControlLabel';
 import StyledRadio from '../styled/StyledRadio';
 import CustomTooltip from '../CustomTooltip';
@@ -15,7 +14,6 @@ const SelectWay = ({ select, handler }) => {
 
   return (
     <FormControl component="fieldset" className={styles.select}>
-      <FormLabel component="legend">Сумма</FormLabel>
       <RadioGroup aria-label="sum" name="sum" value={select} onChange={handler}>
         <StyledFormControlLabel value="mounth" control={<StyledRadio />} label="Оклад за месяц" />
         <StyledFormControlLabel

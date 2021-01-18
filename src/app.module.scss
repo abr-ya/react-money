@@ -1,5 +1,7 @@
 .app {
   margin: 20px;
+  display: flex;
+  flex-direction: column;
   font-family: 'Roboto';
 
   h1 {
