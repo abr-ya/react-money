@@ -9,13 +9,6 @@ const theme = createMuiTheme({
       main: '#ccc',
     },
   },
-  overrides: {
-    MuiButtonBase: {
-      root: {
-        padding: '5px',
-      },
-    },
-  },
 });
 
 export default theme;
