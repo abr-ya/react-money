@@ -5,6 +5,7 @@ import SelectWay from './components/SelectWay/SelectWay';
 import NdflToggle from './components/NdflToggle';
 import ThemedTextField from './components/themed/ThemedTextField';
 import Result from './components/Result/Result';
+import CustomSnackbarControl from './components/CustomSnackbarControl';
 
 const App = () => {
   const [select, setSelect] = useState('mounth'); // ['mounth', 'mrot', 'perDay', 'perHour']
@@ -54,6 +55,7 @@ const App = () => {
           ndfl={Math.round(isNdflOn ? (perMonth / 87) * 13 : perMonth * 0.13)}
         />
       )}
+      <CustomSnackbarControl />
     </div>
   );
 };

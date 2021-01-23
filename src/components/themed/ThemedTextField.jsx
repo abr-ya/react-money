@@ -29,7 +29,8 @@ function NumberFormatCustom(props) {
 
 NumberFormatCustom.propTypes = {
   inputRef: PropTypes.func.isRequired,
-  name: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  name: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
 
