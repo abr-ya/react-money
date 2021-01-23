@@ -4,7 +4,7 @@ import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core/styles';
 import rootReducer from './reducers/rootReducer';
-import App from './containers/appContainer';
+import App from './App';
 import CustomSnackbar from './containers/customSnackbarContainer';
 import theme from './themes/theme';
 
@@ -12,7 +12,8 @@ const composeEnhancers = typeof window === 'object'
   && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
   ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ }) : compose;
 
-const store = createStore(
+// eslint-disable-next-line import/prefer-default-export
+export const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware()), // здесь middlewares, м.б. массив
 );

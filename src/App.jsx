@@ -6,6 +6,8 @@ import NdflToggle from './components/NdflToggle';
 import ThemedTextField from './components/themed/ThemedTextField';
 import Result from './components/Result/Result';
 import CustomSnackbarControl from './components/CustomSnackbarControl';
+// убираю пока из-за линтера
+// import CustomButton from './components/CustomButton';
 
 const App = () => {
   const [select, setSelect] = useState('mounth'); // ['mounth', 'mrot', 'perDay', 'perHour']
