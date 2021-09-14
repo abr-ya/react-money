@@ -6,6 +6,7 @@ import NdflToggle from './components/NdflToggle';
 import ThemedTextField from './components/themed/ThemedTextField';
 import Result from './components/Result/Result';
 import CustomSnackbarControl from './components/CustomSnackbarControl';
+import ButtonPrim from './components/ButtonPrim/ButtonPrim';
 // убираю пока из-за линтера
 // import CustomButton from './components/CustomButton';
 
@@ -58,6 +59,17 @@ const App = () => {
         />
       )}
       <CustomSnackbarControl />
+      <h2>Кастомная кнопка</h2>
+      <ButtonPrim
+        text="Я кнопка!"
+        handler={() => console.log('!')}
+        isAdditional={false}
+      />
+      <ButtonPrim
+        text="Я основная кнопка!"
+        handler={() => console.log('!')}
+        isAdditional
+      />
     </div>
   );
 };
